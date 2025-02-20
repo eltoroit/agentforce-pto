@@ -1,0 +1,39 @@
+{
+	"settings": {
+		"days": 1,
+		"alias": "soSlackDemo",
+		"OpenBrowser": true,
+		"QuitOnErrors": true,
+		"UserOnScreen": true, // Can I prompt the user for manual verification? On CICD, this should be false
+	},
+	"steps": [
+		// Prepare environment
+		"BackupAlias", // In case you need to go back to the old org :-)
+
+		// Creating Scratch org
+		"CreateScratchOrg",
+		"GeneratePassword",
+		"CreateFinestDebugLevel",
+
+		// Pre-Deploy
+		{ "AssignPermissionSet": "EinsteinGPTPromptTemplateManager" },
+		// { "ManualMetadata": { "url": "/lightning/setup/EinsteinGPTSetup/home", "message": "Enable Einstein" } },
+		{ "ManualMetadata": { "url": "/lightning/setup/EinsteinBots/home", "message": "Enable bots" } },
+		{ "ManualMetadata": { "url": "/lightning/setup/EinsteinCopilot/home", "message": "Enable agents" } },
+		{ "ExecuteApex": "@ELTOROIT/scripts/apex/AgentforceCreateUser.apex" },
+		{ "RunShell": { "app": "./agentforceUser.sh" } },
+
+		// Push metadata
+		"ShowDeployPage",
+		"PushMetadata",
+
+		// Post-Deploy
+		{ "AssignPermissionSet": "psRAG_Demo" },
+		{ "ExecuteApex": "@ELTOROIT/scripts/apex/SetUserRecord.apex" },
+		{ "ExecuteApex": "@ELTOROIT/scripts/apex/AgentforceUpdateUser.apex" },
+		{ "DeployProfile": "force-apps/doNotDeploy/main/default/profiles/Admin.profile-meta.xml" },
+
+		// Print results
+		"ShowFinalSuccess",
+	],
+}

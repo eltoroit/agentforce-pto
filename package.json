@@ -1,0 +1,46 @@
+{
+	"name": "et-data-cloud-scratch-org",
+	"private": true,
+	"version": "Summer '24 (v60)",
+	"description": "Basic Data Cloud Scratch Org",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/eltoroit/ETScratchOrgsStarter.git"
+	},
+	"keywords": [
+		"SFDX",
+		"Scratch",
+		"Starter"
+	],
+	"author": "Andres Perez (@ELTOROIT)",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/eltoroit/ETScratchOrgsStarter/issues"
+	},
+	"homepage": "https://github.com/eltoroit/ETScratchOrgsStarter#readme",
+	"scripts": {
+		"build": "./build.sh",
+		"createOrg": "node @ELTOROIT/scripts/nodejs/orgBuilder.mjs --config-file=@ELTOROIT/scripts/nodejs/orgBuilder.jsonc"
+	},
+	"devDependencies": {
+		"@lwc/eslint-plugin-lwc": "^1.9.0",
+		"@prettier/plugin-xml": "^3.4.1",
+		"@sa11y/jest": "^6.13.0",
+		"@salesforce/eslint-config-lwc": "^3.6.0",
+		"@salesforce/eslint-plugin-lightning": "^1.0.0",
+		"@salesforce/sfdx-lwc-jest": "^7.0.1",
+		"eslint": "^8.57.0",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-jest": "^28.9.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.10",
+		"prettier": "^3.4.2",
+		"prettier-plugin-apex": "^2.2.2"
+	},
+	"dependencies": {
+		"fs-extra": "11.1.1",
+		"jsonc-parser": "3.2.0",
+		"sfdx-cli": "^7.209.6",
+		"xml2js": "^0.6.2"
+	}
+}
